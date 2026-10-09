@@ -116,7 +116,7 @@ OPEN and CLOSE request speed magnitude **3200**. This is a requested target only
 
 Default service addresses: 
 
-- API: `http://<IP Adress>:8001`
+- API: `http://<IP Address>:8001`
 - Interactive API documentation: `http://<IP Address>:8001/docs`
 
 | Method | Endpoint | Action |
