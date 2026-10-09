@@ -1,8 +1,7 @@
 
 ###########################################################################
 # Created : 2026-10-09 GB
-# Purpose : Provides the RoofRunner HTTP API for SMC G2 telemetry
-#           and motor commands.
+# Purpose : RoofRunner HTTP API for telemetry and motor control.
 # Notes   : Most code was generated with assistance from ChatGPT.
 #           Chat title: Astrophotography N
 #           OpenAI model/version: GPT-6
@@ -19,7 +18,7 @@ worker = SmcWorker()
 
 
 async def execute_command(command):
-    """Submit a command and await its execution result."""
+    """Submit a command and await its result."""
     future = worker.submit_command(command)
 
     try:
@@ -41,10 +40,9 @@ async def execute_command(command):
                     else "SMC_COMMAND_OUTCOME_UNKNOWN"
                 ),
                 "message": (
-                    "Command expired before execution"
+                    "Command cancelled before execution"
                     if cancelled
-                    else "Command execution began, but its outcome "
-                         "was not confirmed before timeout"
+                    else "Execution began but outcome is unconfirmed"
                 ),
             },
         }
@@ -86,6 +84,11 @@ async def close_shutter():
 @app.post("/api/dome/open")
 async def open_shutter():
     return await execute_command("open")
+
+
+@app.post("/api/dome/reset")
+async def reset_controller():
+    return await execute_command("reset")
 
 
 @app.post("/api/dome/stop")
