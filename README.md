@@ -50,10 +50,12 @@ The Pi sends commands to the SMC; **the Pi does not directly drive the motor**. 
 
 | Raspberry Pi | Pololu SMC | Purpose |
 | --- | --- | --- |
-| UART TX | RX | Commands and variable requests |
-| UART RX | TX | Responses / telemetry |
-| GND | GND | Common signal reference |
-| GPIO input (planned) | ERR | GPIO-based error monitoring is not yet implemented; SMC error status is currently read through UART and exposed in telemetry. |
+| 5V Pin 4 | N/A | 5V power for case fan |
+| GND Pin 6 | N/A | GND for fan |
+| UART TX Pin 8 / GPIO 14 | RX | Commands and variable requests |
+| UART RX Pin 10 / GPIO 15 | TX | Responses / telemetry |
+| GPIO input Pin 12 / GPIO 18 | ERR | GPIO-based error monitoring is not yet implemented; SMC error status is currently read through UART and exposed in telemetry. |
+| GND Pin 14 | GND | Common signal reference |
 
 The SMC's motor supply is connected to its **VIN/GND motor-power terminals**; that supply also powers the SMC electronics. The Raspberry Pi requires its own appropriate power arrangement. Connecting the SMC's 12 V motor supply directly to a Pi GPIO or Pi power pin would be bad.  Don't do that.
 
