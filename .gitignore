@@ -18,6 +18,7 @@ logs/
 __pycache__/
 *.py[cod]
 .venv/
+.*_venv/
 venv/
 
 # Node, should JavaScript disease progress
