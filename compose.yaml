@@ -1,0 +1,15 @@
+
+services:
+  roofrunner:
+    build: .
+    container_name: roofrunner
+    restart: unless-stopped
+
+    devices:
+      - /dev/ttyS0:/dev/serial0
+
+    env_file:
+      - .env
+
+    ports:
+      - "8001:8001"
