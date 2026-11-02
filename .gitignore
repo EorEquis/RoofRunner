@@ -33,3 +33,6 @@ Thumbs.db
 *.tmp
 *.swp
 *~
+
+# Pytest
+.pytest_cache/
