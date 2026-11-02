@@ -6,10 +6,7 @@ Raspberry Pi 3B controller for the TriStar Observatory roll-off roof. A FastAPI 
 
 ## Hardware
 
-- Raspberry Pi 3B, Pololu SMC G2 18v15, nominal 12 V motor supply, DC roof motor, and two normally-closed endpoint reed switches.
-- Pi UART TX (GPIO14/pin 8) → SMC RX; Pi UART RX (GPIO15/pin 10) ← SMC TX; common ground.
-- SMC ERR is wired to Pi GPIO18/pin 12 but **GPIO error monitoring is not implemented**. Error status is read over UART.
-- The SMC handles motor power, configured acceleration/speed limits, and limit-switch behavior. The Pi does not drive the motor directly.
+- Raspberry Pi 3B, Pololu SMC G2 18v15, nominal 12 V motor supply, DC roof motor, and two normally-closed limit switches.
 
 See [hardware wiring](docs/hardware.md) and [serial/API protocol](docs/protocol.md).
 
