@@ -2,7 +2,7 @@
 
 Raspberry Pi 3B controller for the TriStar Observatory roll-off roof. A FastAPI service sends commands to a Pololu Simple Motor Controller G2 18v15 over TTL UART and publishes cached telemetry.
 
-**Status:** Motor control, telemetry, STOP/RESET, limit checks, and API-key authentication have been tested. An ASCOM dome driver and observatory-wide interlocks are not implemented.
+**Status:** Motor control, telemetry, STOP/RESET, limit checks, and API-key authentication have been tested. An ASCOM dome driver is not yet implemented.
 
 ## Hardware
 
