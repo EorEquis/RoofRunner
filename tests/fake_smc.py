@@ -60,7 +60,7 @@ class FakeSMC:
 
     @property
     def stop_commands(self):
-        return [w for w in self.writes if w == b"\\x85\\x00\\x00"]
+        return [w for w in self.writes if w == bytes([0x85, 0, 0])]
 
     @property
     def speed_commands(self):
