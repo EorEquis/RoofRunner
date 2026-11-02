@@ -78,3 +78,10 @@ Four distinct Powerpole connector pairs.
 
 Two **normally-closed (NC)** limit switches.  TriStar Observatory uses reed switches, triggered by magnets placed on the underside of each roof end.  You may use whatever arrangement/style of switches you prefer.  NC switches are recommended, so a broken wire creates an open (active) state.  This should prevent undesirable roof movement/limit excursion in the event of a broken wire.
 
+| Roof position | Broken switch | Result |
+|---|---|---|
+| Closed | Closed limit | Opening permitted; HALTED when open limit activates |
+| Closed | Open limit | Both limits active immediately; HALTED |
+| Open | Open limit | Closing permitted; HALTED when closed limit activates |
+| Open | Closed limit | Both limits active immediately; HALTED |
+
