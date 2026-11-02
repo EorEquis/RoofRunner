@@ -63,16 +63,18 @@ The roof motor connects to the SMC motor-output terminals.
 
 ### 3.3 Enclosure connections
 
-Two distinct Powerpole connector pairs.
+Four distinct Powerpole connector pairs.
 
 | Connector pair | Purpose |
 |---|---|
-| Power pair | 12V motor supply input and motor output connections |
-| Limit-switch pair | Roof open/closed limit-switch connections |
+| Power pair | 12V motor supply input |
+| Motor pair | Motor output |
+| Open Limit-switch pair | Roof open limit-switch connection |
+| Closed Limit-switch pair | Roof closed limit-switch connection |
 
 ---
 
 ## 4. Roof Limit Switches
 
-Two **normally-closed (NC)** limit reed switches:
+Two **normally-closed (NC)** limit switches.  TriStar Observatory uses reed switches, triggered by magnets placed on the underside of each roof end.  You may use whatever arrangement/style of switches you prefer.  NC switches are recommended, so a broken wire creates an open (active) state.  This should prevent undesirable roof movement/limit excursion in the event of a broken wire.
 
