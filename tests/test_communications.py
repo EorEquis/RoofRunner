@@ -25,7 +25,7 @@ def test_compact_protocol_reads_signed_speed(worker):
 def test_short_serial_read_raises_timeout(worker):
     class ShortRead(FakeSMC):
         def read(self, size):
-            return b"\\x00"
+            return bytes([0])
     with pytest.raises(TimeoutError):
         worker._read_telemetry(ShortRead())
 
