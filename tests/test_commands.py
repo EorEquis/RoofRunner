@@ -28,7 +28,7 @@ def test_stop_cancels_queued_movement_and_latches_halted(worker):
     worker._process_commands(port)
     assert stop.result()["success"]
     assert port.stop_commands
-    assert not any(w == b"\\x83" for w in port.writes)
+    assert not any(w == bytes([0x83]) for w in port.writes)
 
 
 def test_movement_rejected_while_halted(worker):
