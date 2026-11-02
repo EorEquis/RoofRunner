@@ -6,7 +6,7 @@ RoofRunner is a Raspberry Pi-based controller for the TriStar Observatory roll-o
 
 Its primary hardware components are:
 
-- **Raspberry Pi 3 Model B** — application logic, GPIO monitoring, serial communication, and network interface.
+- **Raspberry Pi 3 Model B** — application logic, serial communication, and network interface.  GPIO monitoring of ERR planned.
 - **Pololu Simple Motor Controller G2 18v15** — controls the roof motor.
 - **12V DC motor supply** — supplies motor power through the Pololu controller.
 - **Two NC roof limit reed switches** — identify fully open and fully closed positions.
