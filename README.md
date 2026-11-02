@@ -4,6 +4,14 @@ A Raspberry Pi controller for the TriStar Observatory roll-off roof. A FastAPI s
 
 **Status:** Motor control, telemetry, STOP/RESET, limit checks, and API-key authentication have been tested. An ASCOM dome driver is not yet implemented.
 
+## Yep.  It's vibe coded.
+
+If this bothers you, stop here, and find another roof controller.
+
+A vast majority of this code was written by ChatGPT.  My role was mostly staying out of its way, and trying to catch some of its stupider mistakes.  I'll trust my ROR to it, whether you do is your decision.
+
+I'm happy to answer questions as I can, or to provide insight and lessons learned from 3 previous roof controllers, but frankly, if you fork/use this code, you're pretty much on your own.  If your roof burns down, and falls into the swamp, maybe you shouldn't have trusted your observatory to some random code from some nobody on the internet.  You almost certainly shouldn't have built your observatory in a swamp.
+
 ## Tested Hardware
 
 - Raspberry Pi 3B, Pololu SMC G2 18v15, nominal 12 V motor supply, DC roof motor, and two normally-closed limit switches.
@@ -79,3 +87,5 @@ Roof clearance, telescope parking, weather and other unattended-operation interl
 | Command times out | Check physical motor state and subsequent telemetry; execution may be uncertain |
 
 For protocol bytes, telemetry fields, and state transitions, see [docs/protocol.md](docs/protocol.md).
+
+Be sure to read [the important notes](docs/important-notes.md) in the docs folder.
