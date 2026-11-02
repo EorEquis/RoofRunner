@@ -80,8 +80,8 @@ Two **normally-closed (NC)** limit switches.  TriStar Observatory uses reed swit
 
 | Roof position | Broken switch | Result |
 |---|---|---|
-| Closed | Closed limit | Opening permitted; HALTED when open limit activates |
-| Closed | Open limit | Both limits active immediately; HALTED |
-| Open | Open limit | Closing permitted; HALTED when closed limit activates |
-| Open | Closed limit | Both limits active immediately; HALTED |
+| Closed | Closed limit switch | Opening permitted; HALTED when open limit activates |
+| Closed | Open limit switch | Both limits active immediately; HALTED |
+| Open | Open limit switch | Closing permitted; HALTED when closed limit activates |
+| Open | Closed limit switch | Both limits active immediately; HALTED |
 
