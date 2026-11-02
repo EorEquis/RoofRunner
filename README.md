@@ -8,7 +8,7 @@ Raspberry Pi 3B controller for the TriStar Observatory roll-off roof. A FastAPI 
 
 - Raspberry Pi 3B, Pololu SMC G2 18v15, nominal 12 V motor supply, DC roof motor, and two normally-closed limit switches.
 
-See [hardware wiring](docs/hardware.md) and [serial/API protocol](docs/protocol.md).
+See [hardware wiring](docs/hardware.md).
 
 ## Setup
 
@@ -27,16 +27,10 @@ PI_SERIAL_PORT=/dev/serial0
 SMC_COMMAND_TIMEOUT_MS=3000
 SMC_POLL_INTERVAL_MS=500
 ROOFRUNNER_SERIAL_GID=<numeric-GID-from-stat>
-ROOFRUNNER_API_TOKEN=<output-of-openssl-rand-hex-32>
+ROOFRUNNER_API_TOKEN=make_something_up
 ```
 
-Generate the token with `openssl rand -hex 32`. Do not commit `.env`. The serial group ID is used by Docker Compose to give the non-root container user access to the device. If your Pi uses a different UART device, adjust the Compose mapping and group ID accordingly.
-
-```bash
-docker compose up -d --build
-docker compose ps
-docker compose logs --tail=100 roofrunner
-```
+You can easily generate a token with `openssl rand -hex 32`, but it can be literally anything you wish. The serial group ID is used by Docker Compose to give the non-root container user access to the device. If your Pi uses a different UART device, adjust the Compose mapping and group ID accordingly.
 
 The container runs as unprivileged UID 10001. Check with `docker exec roofrunner id`.
 
@@ -52,13 +46,13 @@ Base URL: `http://<pi-ip>:8001`; interactive Swagger UI: `/docs`.
 | POST | `/api/dome/reset` | `X-API-Key` | Health-check and clear HALTED |
 | POST | `/api/dome/stop` | None | Request zero speed and latch HALTED |
 
-Example read-only check:
+Example:
 
 ```bash
-curl http://<pi-ip>:8001/api/dome/telemetry
+http://<pi-ip>:8001/api/dome/telemetry
 ```
 
-For protected requests, send `X-API-Key: <token>` in the HTTP header (Swagger provides an `x-api-key` field). Missing/invalid tokens return HTTP 401; an unset server token returns HTTP 503. The service uses **HTTP, not HTTPS**: keep it on a trusted network and do not forward port 8001 to the internet.
+For protected requests, send `X-API-Key: <token>` in the HTTP header (Swagger provides an `x-api-key` field for testing). Missing/invalid tokens return HTTP 401; an unset server token returns HTTP 503. The service uses **HTTP, not HTTPS**: keep it on a trusted network and do not forward port 8001 to the internet.
 
 Command results can return HTTP 200 with `"success": false`; always inspect the JSON result. A timeout may leave the command outcome unknown.
 
@@ -71,7 +65,7 @@ Command results can return HTTP 200 with `"success": false`; always inspect the 
 - The HALTED latch is **not persisted** across container restarts; startup performs a new health check.
 - `HALTED` describes software state, **not proof of physical motor stoppage**. Maintain an independent means of removing motor power.
 
-The two NC limit switches indicate endpoints; neither active means **between limits**, not necessarily moving. Roof clearance, telescope parking, weather and other unattended-operation interlocks are outside this application.
+Roof clearance, telescope parking, weather and other unattended-operation interlocks are your responsibility.
 
 ## Troubleshooting
 
