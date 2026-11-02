@@ -8,24 +8,13 @@
 ###########################################################################
 
 import asyncio
-import os
-import secrets
 
 from contextlib import asynccontextmanager
-from fastapi import Depends, FastAPI, Header, HTTPException
+from fastapi import FastAPI
 from smc_worker import SmcWorker
 
 
 worker = SmcWorker()
-
-
-def require_api_key(x_api_key: str | None = Header(default=None)):
-    expected = os.environ.get("ROOFRUNNER_API_TOKEN")
-    if not expected:
-        raise HTTPException(status_code=503, detail="API authentication not configured")
-    if x_api_key is None or not secrets.compare_digest(x_api_key, expected):
-        raise HTTPException(status_code=401, detail="Invalid API key")
-
 
 
 async def execute_command(command):
@@ -87,17 +76,17 @@ def get_telemetry():
     return worker.get_snapshot()
 
 
-@app.post("/api/dome/close", dependencies=[Depends(require_api_key)])
+@app.post("/api/dome/close")
 async def close_shutter():
     return await execute_command("close")
 
 
-@app.post("/api/dome/open", dependencies=[Depends(require_api_key)])
+@app.post("/api/dome/open")
 async def open_shutter():
     return await execute_command("open")
 
 
-@app.post("/api/dome/reset", dependencies=[Depends(require_api_key)])
+@app.post("/api/dome/reset")
 async def reset_controller():
     return await execute_command("reset")
 

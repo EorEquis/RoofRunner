@@ -8,6 +8,10 @@ services:
     devices:
       - /dev/ttyS0:/dev/serial0
 
+    # Match the host serial device's numeric group ID.
+    group_add:
+      - "${ROOFRUNNER_SERIAL_GID:?Set ROOFRUNNER_SERIAL_GID in .env to the GID of /dev/ttyS0}"
+
     env_file:
       - .env
 
