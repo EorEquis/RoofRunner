@@ -30,7 +30,7 @@ The Raspberry Pi communicates with the Pololu controller using TTL UART. The Pol
 | 12 | GPIO18 | 🟠 Orange | SMC error input | Pololu ERR |
 | 14 | — | ⚫ Black | Common ground | Pololu GND |
 
-**Important:** Pin numbers in this table are physical Raspberry Pi header pin numbers, not BCM GPIO numbers.
+**Important:** Pin numbers in this table are physical Raspberry Pi header pin numbers, not GPIO numbers.
 
 ### 2.2 UART crossover
 
