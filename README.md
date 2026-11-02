@@ -311,10 +311,4 @@ These tests establish observed behavior of the development hardware. They are no
 - **Observatory integration:** any necessary park, clearance, weather, and operational interlocks appropriate to the finished installation.
 - **Installation documentation:** final wiring, enclosure, SMC configuration export, and on-roof commissioning results.
 
-## Development notes
 
-The initial implementation was developed and hardware-tested on the `roofrunner-initial-dev` branch. Python code was written with assistance from ChatGPT; source files carry attribution headers. Human judgment and responsibility are suggested.  They may not be present, but they're strongly suggested.
-
----
-
-*RoofRunner: because an observatory roof should open on command, close on command, stop on command, and otherwise refrain from creative interpretation.*
