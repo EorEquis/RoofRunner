@@ -1,5 +1,7 @@
 # Important Notes
 
+Here are a few RoofRunner behaviors to be aware of.  These are "by design".  The system trusts the motor controller to do its job with every movement, however these specific edge cases could allow behavior that seems unexpected or surprising.  They do not represent risk beyond any normal movement command.
+
 ## READY while the roof is moving
 
 If the Raspberry Pi restarts during roof movement, the SMC may continue the previously commanded movement. On startup, RoofRunner checks SMC communication, error status, limit consistency, and input voltage. If those checks pass, RoofRunner enters `READY` even if the motor is still moving. `READY` means the controller passed its health checks; it does not mean the roof is stationary.
