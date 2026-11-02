@@ -27,10 +27,11 @@ The Raspberry Pi communicates with the Pololu controller using TTL UART. The Pol
 | 6 | — | ⚫ Black | Ground | Cooling fan negative |
 | 8 | GPIO14 | 🟡 Yellow | UART TX | Pololu RX |
 | 10 | GPIO15 | 🟢 Green | UART RX | Pololu TX |
-| 12 | GPIO18 | 🟠 Orange | SMC error input | Pololu ERR |
+| 12 | GPIO18 | 🟠 Orange | SMC error input | Pololu ERR **|
 | 14 | — | ⚫ Black | Common ground | Pololu GND |
 
 **Important:** Pin numbers in this table are physical Raspberry Pi header pin numbers, not GPIO numbers.
+** - SMC ERR line not currently monitored in code.
 
 ### 2.2 UART crossover
 
