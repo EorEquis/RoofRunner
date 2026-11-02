@@ -1,32 +1,28 @@
-# Running the Tests
+# These tests do not exercise the roof, nor do they validate your hardware/connections/roof setup.  They are automated tests of the *code only*, using *simulated hardware*.
 
-RoofRunner's automated tests use `pytest` and a simulated SMC. They do not communicate with the real motor controller or move the roof. The test suite can be run from a VS Code Remote SSH terminal connected to the RoofRunner Pi, without affecting the running Docker container.
+You are responsible for physical end to end testing of your setup.
 
-## Initial setup
+## Running the Tests
 
-Check out the branch containing the tests (or `main` after the test harness is merged):
+RoofRunner's automated tests use `pytest` and a simulated SMC. They do not communicate with the real motor controller or move the roof. The test suite can be run from an SSH terminal connected to the RoofRunner Pi, without affecting the running Docker container.
 
-```bash
-cd ~/RoofRunner
-git switch test-harness
-git pull
-```
+### Initial setup
 
-Create a virtual environment **outside the repository** and activate it:
+- Check out the main branch
+- Create a virtual environment **outside the repository** and activate it.  This allows the virtual environment and installed packages live in `~/.venvs/roofrunner-tests`, not in the main repository or Docker container:
 
 ```bash
 mkdir -p ~/.venvs
 python3 -m venv ~/.venvs/roofrunner-tests
 source ~/.venvs/roofrunner-tests/bin/activate
 ```
-
-Install the testing dependencies:
+- Install the testing dependencies:
 
 ```bash
 pip install -r requirements-dev.txt
 ```
 
-## Run the tests
+### Run the tests
 
 From the RoofRunner repository directory, with the virtual environment active:
 
@@ -34,7 +30,7 @@ From the RoofRunner repository directory, with the virtual environment active:
 python -m pytest -v
 ```
 
-Pytest reports each test's result and a summary. The initial test run completed with **20 passed**.
+Pytest reports each test's result and a summary. 
 
 ## Subsequent runs
 
@@ -46,4 +42,4 @@ source ~/.venvs/roofrunner-tests/bin/activate
 python -m pytest -v
 ```
 
-The virtual environment and installed packages live in `~/.venvs/roofrunner-tests`, not in the repository. Pytest may create `.pytest_cache/` and `__pycache__/` directories; these are temporary artifacts and should not be committed.
+
