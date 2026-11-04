@@ -163,6 +163,7 @@ class SmcWorker:
         # Only the serial worker writes to the SMC. Send STOP now,
         # before processing another movement command.
         self._set_speed(port, 0)
+        self._publish(self._read_telemetry(port))
 
         with self._lock:
             self._stop_pending = False
@@ -210,6 +211,7 @@ class SmcWorker:
             try:
                 if command == "stop":
                     self._set_speed(port, 0)
+                    self._publish(self._read_telemetry(port))
 
                     with self._lock:
                         if generation == self._generation:
@@ -236,6 +238,7 @@ class SmcWorker:
                     self._write_command(port, bytes([0x83]))
                     speed = 3200 if command == "open" else -3200
                     self._set_speed(port, speed)
+                    self._publish(self._read_telemetry(port))
 
                 future.set_result({
                     "success": True,
