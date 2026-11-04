@@ -2,7 +2,7 @@
 
 A Raspberry Pi controller for the TriStar Observatory roll-off roof. A FastAPI service sends commands to a Pololu Simple Motor Controller over TTL UART and publishes cached telemetry.
 
-**Status:** Motor control, telemetry, STOP/RESET, limit checks, and API-key authentication have been tested. An ASCOM dome driver is not yet implemented.
+**Status:** Motor control, telemetry, STOP/RESET, limit checks, and API-key authentication have been tested. An [ASCOM dome driver](https://github.com/EorEquis/RoofRunner-ASCOM-Driver) has been built.
 
 ## Yep.  It's vibe coded.
 
